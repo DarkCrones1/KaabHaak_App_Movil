@@ -9,8 +9,7 @@ String userCreateRequestDtoToJson(UserCreateRequestDto data) =>
 class UserCreateRequestDto {
   UserCreateRequestDto({
     required this.email,
-    required this.password,
-    // required this.name
+    required this.password
   });
 
   final String email;
@@ -20,15 +19,11 @@ class UserCreateRequestDto {
   factory UserCreateRequestDto.fromJson(Map<String, dynamic> json) =>
       UserCreateRequestDto(
         email: json["email"],
-        password: json["password"],
-        // name: json["name"],
-
+        password: json["password"]
       );
 
   Map<String, dynamic> toJson() => {
         "email": email,
         "password": password,
-        // "name": name,
-        
       };
 }

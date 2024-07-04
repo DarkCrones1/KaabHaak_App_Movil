@@ -31,8 +31,8 @@ class UserLoginProvider extends ChangeNotifier{
         if (context.mounted){
           final json = jsonDecode(response.body)['token'];
           await storage.write(key: 'token', value: json);
-          final token = await getAuthToken();
-          logger.d('token almacenado es: $token');
+          // final token = await getAuthToken();
+          // logger.d('token almacenado es: $token');
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Bienvenid@ ${user.email}")));

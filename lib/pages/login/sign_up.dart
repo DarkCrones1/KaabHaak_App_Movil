@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:kaabhaak/providers/user_providers/user_provider.dart';
 import 'package:logger/logger.dart';
@@ -12,14 +11,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
   final logger = Logger();
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final eMailUser = TextEditingController();
   final passWordUser = TextEditingController();
   bool _passwordVisible = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +28,17 @@ class _SignUpState extends State<SignUp> {
         child: Form(
           key: formKey,
           child: ListView(
-            children:  <Widget> [
+            children: <Widget>[
               Image.asset(
-                    'image/beehaak.png',
-                    height: 200,
-                    width: 200,
-                  ),
-              const SizedBox(height: 20,),
+                'image/beehaak.png',
+                height: 200,
+                width: 200,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Padding(
-                padding:  const EdgeInsets.only(left: 20.0, right: 20.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: TextFormField(
                   controller: eMailUser,
                   validator: (value) {
@@ -57,7 +56,9 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: TextFormField(
@@ -95,13 +96,16 @@ class _SignUpState extends State<SignUp> {
               ),
               ButtonBar(
                 children: <Widget>[
-                  TextButton.icon(onPressed: (){
-                    if (formKey.currentState!.validate()) {
-                      logger.d(nameController.text);
-                      context.read<UserProvider>().createUser(eMailUser.text, passWordUser.text, context);
-                    }
-                  },
-                  icon: const Icon(Icons.create), label: const Text('Crear cuenta')),
+                  TextButton.icon(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          logger.d(nameController.text);
+                          context.read<UserProvider>().createUser(
+                              eMailUser.text, passWordUser.text, context);
+                        }
+                      },
+                      icon: const Icon(Icons.create),
+                      label: const Text('Crear cuenta')),
                 ],
               ),
             ],

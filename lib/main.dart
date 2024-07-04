@@ -43,44 +43,27 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => ProductProvider()..fetchProduct(),
-        ),
+            create: (_) => ProductProvider()..fetchProduct()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(
-          create: (context) => CartProvider(),
-        ),
+            create: (_) => ProductNatureProvider()..fetchProductNature()),
         ChangeNotifierProvider(
-          create: (context) => ProductNatureProvider()..fetchProductNature()
-        ),
+            create: (_) => ProductCandyProvider()..fetchProductCandy()),
         ChangeNotifierProvider(
-          create: (context) => ProductCandyProvider()..fetchProductCandy(),
-        ),
+            create: (_) => ProductBeautyProvider()..fetchProductBeauty()),
         ChangeNotifierProvider(
-          create: (context) => ProductBeautyProvider()..fetchProductBeauty(),
-        ),
+            create: (_) => CategoryProvider()..fetchCategory()),
         ChangeNotifierProvider(
-          create: (context) => CategoryProvider()..fetchCategory(),
-        ),
+            create: (_) =>
+                ChangeTheme(ThemeData(colorScheme: darkColorScheme))),
+        ChangeNotifierProvider(create: (_) => UserProvider()..fetchUser()),
+        ChangeNotifierProvider(create: (_) => UserLoginProvider()),
+        ChangeNotifierProvider(create: (_) => ProductCategoryProvider()),
+        ChangeNotifierProvider(create: (_) => SearchProvider()),
         ChangeNotifierProvider(
-          create: (context) => ChangeTheme(ThemeData(colorScheme: darkColorScheme)),
-        ),
+            create: (_) => UserDataProvider()..fetchUserData()),
         ChangeNotifierProvider(
-          create: (context) => UserProvider()..fetchUser(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => UserLoginProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ProductCategoryProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => SearchProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => UserDataProvider()..fetchUserData(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => UserAddressProvider()..fetchUserAddress(),
-        ),
+            create: (_) => UserAddressProvider()..fetchUserAddress()),
       ],
       child: const MaterialAppWidget(),
     );
@@ -101,24 +84,22 @@ class MaterialAppWidget extends StatelessWidget {
       theme: theme.getTheme(),
       home: const NavegationBar(),
       routes: {
-        '/home_navbar':(context) => const NavegationBar(),
-        '/home_navbar_user':(context) => const NavegationBarUser(),
+        '/home_navbar': (context) => const NavegationBar(),
+        '/home_navbar_user': (context) => const NavegationBarUser(),
         // '/search_page':(context) => const SearchPage(),
-        '/menu_page':(context) => const MenuPage(),
-        '/menu_user':(context) => const MenuUser(),
-        '/login_page':(context) => const LoginPage(),
-        '/sign_up':(context) => const SignUp(),
-        '/recover_pass':(context) => const RecoverPassPage(),
-        '/userData_page':(context) => const UserData(),
-        '/userAddress_page':(context) => const UserAddress(),
-        '/page_category_Natural':(context) => const PageNature(),
-        '/page_category_Dulces':(context) => const PageCandy(),
-        '/page_category_Belleza':(context) => const PageBeauty(),
-        '/page_pay':(context) => const PaySelect(),
-        '/theme_page':(context) => const ThemePage(),
-
+        '/menu_page': (context) => const MenuPage(),
+        '/menu_user': (context) => const MenuUser(),
+        '/login_page': (context) => const LoginPage(),
+        '/sign_up': (context) => const SignUp(),
+        '/recover_pass': (context) => const RecoverPassPage(),
+        '/userData_page': (context) => const UserData(),
+        '/userAddress_page': (context) => const UserAddress(),
+        '/page_category_Natural': (context) => const PageNature(),
+        '/page_category_Dulces': (context) => const PageCandy(),
+        '/page_category_Belleza': (context) => const PageBeauty(),
+        '/page_pay': (context) => const PaySelect(),
+        '/theme_page': (context) => const ThemePage(),
       },
     );
   }
 }
-
